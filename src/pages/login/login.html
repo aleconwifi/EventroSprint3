@@ -1,7 +1,7 @@
 <ion-content>
-    <div>
+    <div padding>
         <div class="logo">
-            <img src="http://placehold.it/50x50">
+            <img src="assets/imgs/logito.jpeg">
         </div>
         <ion-item>
             <ion-input type="email" [(ngModel)]="email" name="email" placeholder="Email"></ion-input>
@@ -12,7 +12,7 @@
         </ion-item>
         <button ion-button block class="loginBtn">Login</button>
         <br>
-        <button ion-button block class="loginBtn">Sign Up</button>
+        <button ion-button block clear class="signup" (click)="registerPage()">No tienes cuenta? Registrate</button>
 
     </div>
 </ion-content>
