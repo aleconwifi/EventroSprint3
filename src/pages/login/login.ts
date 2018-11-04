@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { RegisterPage } from '../register/register';
+import { IonicPage, NavController, NavParams, LoadingController, AlertController } from 'ionic-angular';
+import { RegisterProvider } from '../../providers/register/register';
+import { Storage } from '@ionic/storage';
 
 
 
@@ -14,16 +15,74 @@ export class LoginPage {
   email: string;
   password: string;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  loading: any;
+
+  constructor(public navCtrl: NavController, 
+              public navParams: NavParams,
+              private reg: RegisterProvider,
+              private loadingCtrl: LoadingController,
+              private alertCtrl: AlertController,
+              private storage: Storage) {
   }
 
+  
+
+
   ionViewDidLoad() {
-    console.log('ionViewDidLoad LoginPage');
+
   }
 
   registerPage(){
-    this.navCtrl.push(RegisterPage);
+    this.navCtrl.push("RegisterPage");
 
+  }
+
+
+
+  login(){
+     //PRUEBAS VALIDACIONES AL DEJAR CAMPOS VACIOS
+    if(this.email !== undefined || this.password !== undefined){
+      this.showLoading();
+      //loginUser , metodo del servicio Register, hace el post con el backend
+      this.reg.loginUser(this.email, this.password)
+        .subscribe(res => {
+          this.loading.dismiss();
+          if(res.user){
+            this.storage.set('useremail', res.user.email);
+            this.navCtrl.setRoot("HomePage");
+          }
+
+          if(res.error){
+          //Alert Controller, desplegarlo si hay error y mostrar el error del backend
+
+            let alert = this.alertCtrl.create({
+              title: 'Error Inicio de Sesion',
+              subTitle: res.error,
+              buttons: ['OK']
+            });
+
+            alert.present();
+          }
+        });
+        this.password = '';
+        this.email = '';
+    } else {
+      let alert = this.alertCtrl.create({
+        title: 'Error Inicio de Sesion',
+        subTitle: 'Autenticando...No pises el saman',
+        buttons: ['OK']
+      });
+
+      alert.present();
+    }
+  }
+
+  showLoading(){
+    this.loading = this.loadingCtrl.create({
+      content: 'Authenticating...'
+    });    
+
+    this.loading.present();
   }
 
 }

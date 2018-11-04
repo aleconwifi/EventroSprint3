@@ -20,4 +20,15 @@ export class RegisterProvider {
     });
   }
 
+
+
+  loginUser(email, password): Observable<any>{
+    return this.http
+      .post('http://localhost:3000/api/login/user', {
+        email: email,
+        password: password
+      });
+  }
+
+  
 }

@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
+import { Storage } from '@ionic/storage';
 import { IonicPage, 
         NavController, //navegacion entre paginas
          NavParams, 
          LoadingController, //mostrar animacion de cargando
          AlertController } from 'ionic-angular'; //mostrar errores en registro
 import { RegisterProvider } from '../../providers/register/register';
+
 
 
 @IonicPage()
@@ -24,7 +26,8 @@ export class RegisterPage {
               public navParams: NavParams, 
               private reg: RegisterProvider,
               private loadingCtrl: LoadingController,
-              private alertCtrl: AlertController) {
+              private alertCtrl: AlertController,
+              private storage: Storage) {
   }
 
   ionViewDidLoad() {
@@ -48,7 +51,7 @@ export class RegisterPage {
           this.loading.dismiss();
           //si se crea el usuario, lo mando al home
           if(res.user){
-           // this.storage.set('useremail', res.user.email);
+            this.storage.set('useremail', res.user.email);
             this.navCtrl.setRoot("HomePage");
           }
 
