@@ -13,7 +13,7 @@
         <ion-item>
             <ion-input type="password" [(ngModel)]="password" name="password" placeholder="Password"></ion-input>
         </ion-item>
-        <button ion-button block class="loginBtn">Registro</button>
+        <button ion-button block class="loginBtn" (click)="userSignup()">Registro</button>
         <br>
         <button ion-button block clear class="signup" (click)="loginPage()">Tienes una cuenta? Ingresa ya!</button>
 
