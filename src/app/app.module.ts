@@ -11,6 +11,7 @@ import { RegisterPage } from '../pages/register/register';
 import { LoginPage } from '../pages/login/login';
 import { RegisterProvider } from '../providers/register/register';
 import { HttpClientModule } from '@angular/common/http';
+import { EventoProvider } from '../providers/evento/evento';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { HttpClientModule } from '@angular/common/http';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    RegisterProvider
+    RegisterProvider,
+    EventoProvider
   ]
 })
 export class AppModule {}

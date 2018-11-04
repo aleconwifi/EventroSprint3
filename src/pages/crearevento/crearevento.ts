@@ -1,12 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { EventoProvider } from '../../providers/evento/evento';
 
-/**
- * Generated class for the CreareventoPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
@@ -15,11 +10,34 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class CreareventoPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  //atributos del objeto evento que se le pasan por
+  //parametros a la funcion createEvento del provider
+  nombre: string;
+  ubicacion: string;
+  fecha: string;
+  hora: string;
+  descripcion: string;
+  categoria: string;
+  userId: any;
+
+  constructor(public navCtrl: NavController,
+               public navParams: NavParams,
+                private evento: EventoProvider) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad CreareventoPage');
+    this.evento.getUserData()
+    .subscribe(res=>{
+      console.log(res.user)
+      this.userId = res.user._id
+    });
+  }
+
+  register(){
+    this.evento.createEvento(this.nombre, this.ubicacion, this.fecha, this.hora, this.descripcion,this.categoria, this.userId)
+      .subscribe(res =>{
+          console.log(res)
+      });
   }
 
 }
