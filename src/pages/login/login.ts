@@ -69,7 +69,7 @@ export class LoginPage {
     } else {
       let alert = this.alertCtrl.create({
         title: 'Error Inicio de Sesion',
-        subTitle: 'Autenticando...No pises el saman',
+        subTitle: 'No puedes colocar campos vacios',
         buttons: ['OK']
       });
 
@@ -79,7 +79,7 @@ export class LoginPage {
 
   showLoading(){
     this.loading = this.loadingCtrl.create({
-      content: 'Authenticating...'
+      content: 'Autenticando...no pises el saman'
     });    
 
     this.loading.present();

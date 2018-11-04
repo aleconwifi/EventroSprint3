@@ -1,0 +1,40 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>Agregar Evento</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+    <div>
+        <ion-item>
+            <ion-label color="primary" stacked>Nombre del Evento</ion-label>
+            <ion-input type="text" [(ngModel)]="nombre"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label color="primary" stacked>Ubicacion</ion-label>
+            <ion-input type="text" [(ngModel)]="ubicacion"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label color="primary" stacked>Fecha</ion-label>
+            <ion-input type="text" [(ngModel)]="fecha"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label color="primary" stacked>Hora</ion-label>
+            <ion-input type="text" [(ngModel)]="hora"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label color="primary" stacked>Descripcion</ion-label>
+            <ion-input type="text" [(ngModel)]="descripcion"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label color="primary" stacked>Categoria</ion-label>
+            <ion-input type="text" [(ngModel)]="categoria"></ion-input>
+        </ion-item>
+
+        <ion-item class="btnItem">
+            <button ion-button block (click)="register()">Agregar</button>
+        </ion-item>
+    </div>
+</ion-content>
