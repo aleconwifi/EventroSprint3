@@ -1,0 +1,50 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>Eventos</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+<ion-content>
+    <ion-item *ngFor="let evento of eventos" (click)="Irevento(evento)">
+        <ion-row>
+            <ion-col col-2>
+                <ion-avatar item-start>
+                    <img src="http://placehold.it/10x10">
+
+                </ion-avatar>
+            </ion-col>
+
+            <ion-col col-10 class="rowCol">
+                <h2 class="companyname" text-wrap>
+                    {{evento.nombre}}
+                </h2>
+
+                <ion-col class="dataCol">
+                    <ion-row>
+                        <ion-col col-12 text-wrap>
+                            <span>
+                      <ion-icon name="archive" class="iconClass"></ion-icon>
+                      {{evento.categoria}}
+                    </span>
+                        </ion-col>
+                        <ion-col col-12 text-wrap>
+                            <ion-icon name="pin" class="iconClass"></ion-icon>
+                            {{evento.fecha}}, {{evento.hora}}
+                        </ion-col>
+
+                        <ion-col col-12 class="rating">
+                            <span class="avg">
+                            <rating [(ngModel)]="rating" readOnly="true" max="5" emptyStarIconName="heart-outline" halfStarIconName="star-half" starIconName="heart" nullable="false"></rating>
+                            (4.5)
+                           </span>
+
+                        </ion-col>
+                    </ion-row>
+                </ion-col>
+
+            </ion-col>
+
+        </ion-row>
+    </ion-item>
+</ion-content>

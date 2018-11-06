@@ -1,0 +1,40 @@
+<ion-header>
+
+    <ion-navbar>
+        <ion-title>{{nombre}}</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+    <ion-item>
+        <ion-label color="oran" stacked>Duracion</ion-label>
+        <ion-range min="1" max="5" [(ngModel)]="duracion" pin="true"></ion-range>
+    </ion-item>
+
+    <ion-item>
+        <ion-label color="oran" stacked>¿Buen horario?</ion-label>
+        <ion-range min="1" max="5" [(ngModel)]="horario" pin="true"></ion-range>
+    </ion-item>
+
+    <ion-item>
+        <ion-label color="oran" stacked>¿Me aportó?</ion-label>
+        <ion-range min="1" max="5" [(ngModel)]="aporte" pin="true"></ion-range>
+    </ion-item>
+
+
+
+    <ion-grid>
+        <ion-row>
+            <ion-label color="oran" stacked>Comentario</ion-label>
+            <ion-col col-12>
+                <ion-textarea [(ngModel)]="review"></ion-textarea>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+
+    <ion-item>
+        <button ion-button block (click)="addReview()" color="oran">Añadir valoración</button>
+    </ion-item>
+</ion-content>

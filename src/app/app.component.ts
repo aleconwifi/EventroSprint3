@@ -26,7 +26,7 @@ export class MyApp {
     this.pages = [
       {title: 'Home', component: 'HomePage', icon: 'home' },
       {title: 'Crear Evento', component: 'CreareventoPage', icon: 'add-circle' },
-      {title: 'Eventos', component: 'HomePage', icon: 'list-box' },
+      {title: 'Eventos', component: 'EventosPage', icon: 'list-box' },
       {title: 'Busqueda', component: 'HomePage', icon: 'search' },
       {title: 'Los mejores', component: 'HomePage', icon: 'archive' },
     ];

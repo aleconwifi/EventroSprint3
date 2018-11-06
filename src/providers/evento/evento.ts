@@ -1,3 +1,5 @@
+import { Platform } from 'ionic-angular';
+
 import { Storage } from '@ionic/storage';
 
 import { HttpClient } from '@angular/common/http';
@@ -17,7 +19,11 @@ export class EventoProvider {
   
 
   constructor(public http: HttpClient,
-              private storage: Storage) {
+              private storage: Storage,
+              private platform: Platform) {
+                this.platform.ready().then(()=>{
+                  this.getEmail();
+                });
   }
 
   //a partir del email del localstorage, devolver el usuario
@@ -49,5 +55,24 @@ export class EventoProvider {
         userId
     });
   }
+
+  getEventos(): Observable<any>{
+    return this.http
+      .get('http://localhost:3000/api/eventos/all');
+  }
+
+  addComentario(eventoId, duracion, horario, aporte, review, userId): Observable<any>{
+    return this.http
+    .post('http://localhost:3000/api/evento/comentario',{
+        eventoId,
+        duracion,
+        horario,
+        aporte,
+        review,
+        userId
+    });
+  }
+
+ 
 
 }
