@@ -1,0 +1,21 @@
+<!--
+  Generated template for the SearchPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+    <ion-navbar>
+        <ion-title>Barra de busqueda</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <ion-searchbar [(ngModel)]="nombre" [showCancelButton]="true" (keyup)="searchEvento()" (ionCancel)="onCancel($event)" (ionClear)="onClear($event)">
+
+    </ion-searchbar>
+
+</ion-content>

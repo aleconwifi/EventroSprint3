@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { EventoProvider } from '../../providers/evento/evento';
-
+import * as _ from 'lodash'; //libreria para calcular el promedio
 
 @IonicPage()
 @Component({
@@ -10,8 +10,8 @@ import { EventoProvider } from '../../providers/evento/evento';
 })
 export class EventosPage {
 
-  eventos = [];
-  rating: number = 5;
+  eventos = []; //vector de eventos
+  rating: number;
 
   constructor(public navCtrl: NavController, 
                 public navParams: NavParams,
@@ -33,6 +33,16 @@ export class EventosPage {
 
   Irevento(evento){
     this.navCtrl.push("IreventoPage", {"data": evento});
+  }
+
+  averageRating(number){
+    if(number.length<=0){
+      this.rating = number.length;
+    } else{
+      this.rating = _.mean(number)
+    }
+
+    return this.rating;
   }
 
 }

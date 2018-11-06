@@ -73,6 +73,15 @@ export class EventoProvider {
     });
   }
 
+  searchEvento(evento):  Observable<any>{
+    return this.http
+    .post('http://localhost:3000/api/search-evento',{
+      evento: evento
+     
+  });
+
+  }
+
  
 
 }

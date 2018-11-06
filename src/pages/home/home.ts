@@ -30,4 +30,10 @@ export class HomePage {
     this.navCtrl.push("ValoracionesPage");
   }
 
+  iraSearch(){
+    this.navCtrl.push("SearchPage");
+
+
+  }
+
 }

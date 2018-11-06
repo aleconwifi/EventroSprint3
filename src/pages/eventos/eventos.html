@@ -35,8 +35,8 @@
 
                         <ion-col col-12 class="rating">
                             <span class="avg">
-                            <rating [(ngModel)]="rating" readOnly="true" max="5" emptyStarIconName="heart-outline" halfStarIconName="star-half" starIconName="heart" nullable="false"></rating>
-                            (4.5)
+                            <rating [ngModel]="averageRating(evento.aporteTotal)" readOnly="true" max="5" emptyStarIconName="star-outline" halfStarIconName="star-half" starIconName="star" nullable="false"></rating>
+                            ({{averageRating(evento.aporteTotal)}})
                            </span>
 
                         </ion-col>
