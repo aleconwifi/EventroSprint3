@@ -6,13 +6,17 @@
 -->
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>categorias</ion-title>
-  </ion-navbar>
+    <ion-navbar>
+        <ion-title>categorias</ion-title>
+    </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
+
+    <div style="display: block;">
+        <canvas baseChart [data]='doughnutChartData' [labels]='doughnutChartLabels' [chartType]='doughnutChartType'></canvas>
+    </div>
 
 </ion-content>

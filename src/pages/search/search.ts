@@ -35,11 +35,11 @@ export class SearchPage {
 
   }
 
-  onCancel(){
+  onCancel(event){
 
   }
 
-  onClear(){
+  onClear(event){
     
   }
 }

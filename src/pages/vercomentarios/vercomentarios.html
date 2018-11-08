@@ -1,0 +1,47 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>Comentarios</ion-title>
+    </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+    <ion-item *ngFor="let rating of evento.rating" (click)="mostrar(rating)">
+        <ion-row>
+            <ion-col col-2>
+                <ion-avatar item-start>
+                    <img src="http://placehold.it/10x10">
+                </ion-avatar>
+            </ion-col>
+
+            <ion-col col-10 class="rowCol">
+                <h2 class="companyname" text-wrap>
+                    {{rating.user.fullname}}
+                </h2>
+
+                <ion-col class="dataCol">
+                    <ion-row>
+                        <ion-col col-12 text-wrap>
+                            <span class="time">
+                                 {{GetReviewTime(rating.created)}}
+                                </span>
+                        </ion-col>
+
+                        <ion-col col-12 class="rating">
+                            <span class="avg">
+             <newrating [ratingnumber]="rating.userTotal"></newrating>
+
+                  <p text-wrap>
+                        {{rating.review.substr(0, 20)}}...
+
+                  </p>
+                </span>
+                        </ion-col>
+                    </ion-row>
+                </ion-col>
+
+            </ion-col>
+
+        </ion-row>
+    </ion-item>
+</ion-content>

@@ -2,11 +2,11 @@
     <ion-navbar transparent>
         <ion-row>
             <ion-col>
-                <ion-title>Profile</ion-title>
+                <ion-title>Evento</ion-title>
             </ion-col>
 
             <ion-col>
-                <button class="review" ion-button icon-end outline>Comentarios</button>
+                <button class="review" ion-button icon-end outline (click)="verComentarios(evento)">Comentarios</button>
             </ion-col>
         </ion-row>
 
@@ -20,7 +20,7 @@
             <button ion-button block class="btn1" (click)="valorarPage(evento)">Escribir Comentario</button>
           </span>
     <span>
-            <button ion-button block class="btn2">Register as an Employee</button>
+            <button ion-button block class="btn2" color="danger">Asistire al Evento</button>
           </span>
 
     <ion-card class="card1">
@@ -61,7 +61,7 @@
             <ion-row>
                 <ion-col>
                     <ion-row class="pRow1">
-                        <p>20 Total de Estrellas</p>
+                        <p>{{ratingSum(evento.aporteTotal)}} Total de Estrellas</p>
                     </ion-row>
                 </ion-col>
             </ion-row>
@@ -70,8 +70,10 @@
                 <ion-col>
                     <ion-row class="pRow2">
                         <span class="avg">
-                                
-                        <p>Rating promedio</p>
+                          
+                <newrating [ratingnumber]="averageRating(evento.aporteTotal)"></newrating>
+
+                        <p>({{averageRating(evento.aporteTotal)}})</p>
                       </span>
                     </ion-row>
 
@@ -94,6 +96,7 @@
                     Valoracion de la duracion
                 </ion-col>
                 <ion-col class="col2">
+                    <newrating [ratingnumber]="averageRating(evento.duracionTotal)"></newrating>
                 </ion-col>
             </ion-row>
             <ion-row>
@@ -101,10 +104,25 @@
                     Horario
                 </ion-col>
                 <ion-col class="col2">
+                    <newrating [ratingnumber]="averageRating(evento.horarioTotal)"></newrating>
+
                 </ion-col>
             </ion-row>
 
         </ion-card-content>
     </ion-card>
+
+
+    <ion-card class="card1">
+        <ion-card-content>
+
+
+
+
+
+        </ion-card-content>
+    </ion-card>
+
+
 
 </ion-content>

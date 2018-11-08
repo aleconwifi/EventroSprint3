@@ -15,11 +15,20 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class CategoriasPage {
 
+   // Doughnut
+   public doughnutChartLabels:string[] = ['Download Sales', 'In-Store Sales', 'Mail-Order Sales'];
+   public doughnutChartData:number[] = [350, 450, 100];
+   public doughnutChartType:string = 'doughnut';
+  
+
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad CategoriasPage');
   }
+
+  
 
 }

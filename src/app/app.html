@@ -18,7 +18,11 @@
       </button>
         </ion-list>
         <ion-list no-lines>
-            <button ion-button color="danger" menuClose (click)="logout()">
+            <button ion-item menuClose>
+                        <ion-icon name="settings" item-left></ion-icon>      
+                        Ajustes</button>
+            <button ion-item menuClose (click)="logout()">
+            <ion-icon name="log-out" item-left></ion-icon>      
                 Cerrar Sesion</button>
         </ion-list>
     </ion-content>

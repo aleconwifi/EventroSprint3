@@ -29,6 +29,7 @@ export class MyApp {
       {title: 'Eventos', component: 'EventosPage', icon: 'list-box' },
       {title: 'Busqueda', component: 'SearchPage', icon: 'search' },
       {title: 'Los mejores', component: 'HomePage', icon: 'archive' },
+      {title: 'Categorias', component: 'CategoriasPage', icon: 'heart' },
     ];
 
   }
