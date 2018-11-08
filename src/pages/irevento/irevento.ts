@@ -16,10 +16,14 @@ import * as _ from 'lodash';
 })
 export class IreventoPage {
 
+
   irEvento: any;
   nombre: string;
 
   evento: any;
+
+
+ 
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     //esto es lo mas importante
@@ -33,15 +37,20 @@ export class IreventoPage {
     
   }
 
+   
   valorarPage(evento){
     this.navCtrl.push("ValoracionesPage", {"data": evento});
+  }
+
+  verComentarios(evento){
+    this.navCtrl.push("VercomentariosPage", {"eventoData": evento});
   }
 
   averageRating(arr){
     if(arr.length <= 0){
       return arr.length;
     } else {
-      return this.roundValue(_.mean(arr));
+      return _.mean(arr);
     }
   }
 
@@ -50,6 +59,7 @@ export class IreventoPage {
     return Math.round(value * factor) / factor;
   }
 
+    //la suma de estrellas del array del raiting
   ratingSum(arr){
     if(arr.length <= 0){
       return arr.length;
@@ -57,5 +67,8 @@ export class IreventoPage {
       return _.sum(arr);
     }
   }
+
+
+  
 
 }
