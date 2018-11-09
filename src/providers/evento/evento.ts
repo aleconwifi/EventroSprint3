@@ -80,6 +80,13 @@ export class EventoProvider {
      
   });
 
+  
+
+  }
+
+  getMejores(): Observable<any>{
+    return this.http
+      .get('http://localhost:3000/api/eventos/mejores');
   }
 
  

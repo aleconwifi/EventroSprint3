@@ -10,7 +10,7 @@
 
 
 <ion-content>
-    <h3 class="header1">Hola, Alejandro</h3>
+    <h3 class="header1" *ngIf="user">Hola, {{user.fullname}}</h3>
     <p class="text-content1">
         ¿Qué te gustaria hacer hoy?
     </p>
@@ -26,7 +26,7 @@
                 Ve los eventos disponibles el dia de hoy
             </p>
 
-            <button class="btn1" ion-button block>Agregar</button>
+            <button class="btn1" ion-button block (click)="ircategorias()">Ver</button>
         </ion-card-content>
     </ion-card>
 

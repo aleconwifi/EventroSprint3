@@ -18,4 +18,18 @@
 
     </ion-searchbar>
 
+    <ion-list *ngIf="showList">
+        <ion-item *ngFor="let evento of searchResults">
+            <h2>
+                <button ion-item *ngIf="results && showResults.length > 0" (click)="iraEvento(evento)">
+                  {{evento.nombre}}
+                </button>
+            </h2>
+
+            <button ion-item *ngIf="noResults && showResults.length === 0">
+                {{evento.nombre}}
+              </button>
+        </ion-item>
+    </ion-list>
+
 </ion-content>

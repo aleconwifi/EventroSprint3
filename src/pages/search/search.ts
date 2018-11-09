@@ -18,6 +18,17 @@ export class SearchPage {
 
   nombre: string;
 
+  //variables mostrar resultados de la busqueda
+  searchResults = [];
+  showList = true;
+  showResults = [];
+  results = false;
+  noResults = false;
+
+
+
+
+
   constructor(public navCtrl: NavController,
                  public navParams: NavParams,
                 private evento: EventoProvider) {
@@ -28,18 +39,39 @@ export class SearchPage {
   }
 
   searchEvento(){
+    this.showList = true;
     this.evento.searchEvento(this.nombre)
       .subscribe(res =>{
-        console.log(res)
+        if(res.results.length > 0){
+          this.results = true;
+          this.noResults = true;
+          this.showResults = res.results;
+          this.searchResults = res.results;
+
+        }else{
+          this.results = false;
+          this.noResults = true;
+          this.showResults = res.results;
+          this.searchResults = [{"nombre": "No encontrado"}]
+        }
       });
 
   }
-
+//dejar de mostrar lista
   onCancel(event){
+    this.showList = false;
 
   }
 
   onClear(event){
+    this.showList = false;
     
+  }
+
+  //ir a un evento en especifico
+  iraEvento(evento){
+    this.showList = false;
+    this.nombre = '';
+    this.navCtrl.push("IreventoPage", {data: evento})
   }
 }

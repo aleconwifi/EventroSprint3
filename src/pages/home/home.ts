@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { EventoProvider } from '../../providers/evento/evento';
 
 /**
  * Generated class for the HomePage page.
@@ -14,13 +15,19 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'home.html',
 })
 export class HomePage {
+  user: any;
  
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,
+      private evento: EventoProvider) {
+
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad HomePage');
+    this.evento.getUserData()
+    .subscribe(res =>{
+      this.user = res.user;
+    });
   }
 
   openPage(){
@@ -28,11 +35,17 @@ export class HomePage {
   }
 
   reviewPage(){
-    this.navCtrl.push("ValoracionesPage");
+    this.navCtrl.push("EventosPage");
   }
 
   iraSearch(){
     this.navCtrl.push("SearchPage");
+
+
+  }
+
+  ircategorias(){
+    this.navCtrl.push("CategoriasPage");
 
 
   }

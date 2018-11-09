@@ -28,7 +28,7 @@ export class MyApp {
       {title: 'Crear Evento', component: 'CreareventoPage', icon: 'add-circle' },
       {title: 'Eventos', component: 'EventosPage', icon: 'list-box' },
       {title: 'Busqueda', component: 'SearchPage', icon: 'search' },
-      {title: 'Los mejores', component: 'HomePage', icon: 'archive' },
+      {title: 'Los mejores', component: 'MejoresPage', icon: 'archive' },
       {title: 'Categorias', component: 'CategoriasPage', icon: 'heart' },
     ];
 
