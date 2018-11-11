@@ -12,6 +12,7 @@ import { LoginPage } from '../pages/login/login';
 import { RegisterProvider } from '../providers/register/register';
 import { HttpClientModule } from '@angular/common/http';
 import { EventoProvider } from '../providers/evento/evento';
+import { CartProvider } from '../providers/cart/cart';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { EventoProvider } from '../providers/evento/evento';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     RegisterProvider,
-    EventoProvider
+    EventoProvider,
+    CartProvider
   ]
 })
 export class AppModule {}
