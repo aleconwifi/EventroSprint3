@@ -30,6 +30,7 @@ export class MyApp {
       {title: 'Busqueda', component: 'SearchPage', icon: 'search' },
       {title: 'Los mejores', component: 'MejoresPage', icon: 'archive' },
       {title: 'Categorias', component: 'CategoriasPage', icon: 'heart' },
+      {title: 'Asistire', component: 'CartPage', icon: 'bookmark' },
     ];
 
   }

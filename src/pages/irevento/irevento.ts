@@ -1,3 +1,4 @@
+import { EventoProvider } from './../../providers/evento/evento';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import * as _ from 'lodash';
@@ -25,7 +26,7 @@ export class IreventoPage {
 
  
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private eventoProvider: EventoProvider) {
     //esto es lo mas importante
     //le pasas la data del irEvento(evento) toma la data del evento y la pasa con el navParams
     this.evento = this.navParams.get("data");
@@ -36,7 +37,9 @@ export class IreventoPage {
   ionViewDidLoad() {
     
   }
-
+  addToCart(product){
+    this.eventoProvider.addProduct(product);
+  }
    
   valorarPage(evento){
     this.navCtrl.push("ValoracionesPage", {"data": evento});
