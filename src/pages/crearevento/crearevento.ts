@@ -27,21 +27,24 @@ export class CreareventoPage {
               private toastCtrl: ToastController) {
   }
 
+  ionViewDidEnter(){}
+
   ionViewDidLoad() {
-  
-  }
-
-  ionViewDidEnter(){
-    this.evento.getUserData()
-    .subscribe(res=>{
-      console.log(res.user)
-      if(res.user !==null){
-        this.userId = res.user._id;
-      }
-   
+    this.evento.getEmail().then(result =>{
+      this.getData(result)
     });
+ 
+}
 
-  }
+//metodo para obtener data del usuario 
+  //guardado en localstorage
+getData(email) {
+  this.evento.getUserData(email).subscribe(res =>{
+    this.userId = res.user._id;
+  })
+}
+
+  
 
   register(){
     this.evento.createEvento(this.nombre, this.ubicacion, this.fecha, this.hora, this.descripcion,this.categoria, this.userId)

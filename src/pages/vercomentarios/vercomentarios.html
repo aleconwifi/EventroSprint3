@@ -10,7 +10,7 @@
         <ion-row>
             <ion-col col-2>
                 <ion-avatar item-start>
-                    <img src="http://placehold.it/10x10">
+                    <img *ngIf="rating.user" src="https://res.cloudinary.com/eventro/image/upload/v{{rating.user.imageVersion}}/{{rating.user.imageId}}">
                 </ion-avatar>
             </ion-col>
 

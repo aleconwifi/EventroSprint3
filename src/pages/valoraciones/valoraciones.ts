@@ -35,7 +35,9 @@ export class ValoracionesPage {
 
 
   ionViewDidLoad() {
-    this.getData();
+    this.evento.getEmail().then(result=>{
+      this.getData(result);
+    })
   }
   //metodo que llama al servicio addComentario para agregar comentarios con valoraciones
   addReview(){
@@ -63,11 +65,13 @@ export class ValoracionesPage {
 
 
       });
+
+      this.navCtrl.setRoot("EventosPage");
   }
 
   //obtener el id del usuario
-  getData(){
-    this.evento.getUserData()
+  getData(email){
+    this.evento.getUserData(email)
     .subscribe(res=>{
       console.log(res.user)
       //validacion para que no de el error del Id

@@ -41,8 +41,13 @@ export class EventosPage {
     } else{
       this.rating = _.mean(number)
     }
-
-    return this.rating;
+    return this.redondearValores(this.rating);
   }
 
+
+
+  redondearValores(value){
+    const factor = Math.pow(10, 1);
+    return Math.round(value * factor) / factor;
+  }
 }

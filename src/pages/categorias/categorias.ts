@@ -1,12 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
-/**
- * Generated class for the CategoriasPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { SlideProvider } from '../../providers/slide/slide';
+//import { Router } from '@angular/router';
 
 @IonicPage()
 @Component({
@@ -14,19 +9,37 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'categorias.html',
 })
 export class CategoriasPage {
+ 
+  cart = [];
+  items = [];
 
-   // Doughnut
-   public doughnutChartLabels:string[] = ['Download Sales', 'In-Store Sales', 'Mail-Order Sales'];
-   public doughnutChartData:number[] = [350, 450, 100];
-   public doughnutChartType:string = 'doughnut';
   
 
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, 
+              public navParams: NavParams,
+              private cartService: SlideProvider,
+              ) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad CategoriasPage');
+    this.cart = this.cartService.getCart();
+    this.items = this.cartService.getProducts();
+    }
+
+
+ /* ngOnInit() {
+    this.cart = this.cartService.getCart();
+    this.items = this.cartService.getProducts();
+  }
+*/
+
+  addToCart(product){
+    this.cartService.addProduct(product);
+
+  }
+
+  openCart(){
+    this.navCtrl.push("DiasPage")
   }
 
   

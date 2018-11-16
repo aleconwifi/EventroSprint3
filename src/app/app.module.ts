@@ -12,6 +12,9 @@ import { LoginPage } from '../pages/login/login';
 import { RegisterProvider } from '../providers/register/register';
 import { HttpClientModule } from '@angular/common/http';
 import { EventoProvider } from '../providers/evento/evento';
+import { Camera } from '@ionic-native/camera';
+import { SlideProvider } from '../providers/slide/slide';
+
 
 @NgModule({
   declarations: [
@@ -38,7 +41,9 @@ import { EventoProvider } from '../providers/evento/evento';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     RegisterProvider,
-    EventoProvider
+    EventoProvider,
+    Camera,
+    SlideProvider
   ]
 })
 export class AppModule {}

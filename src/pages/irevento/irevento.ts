@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import * as _ from 'lodash';
+import { EventoProvider } from '../../providers/evento/evento';
 
 /**
  * Generated class for the IreventoPage page.
@@ -22,10 +23,16 @@ export class IreventoPage {
 
   evento: any;
 
+  user: any;
+
 
  
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController,
+                 public navParams: NavParams,
+                  private eventoP: EventoProvider,
+                  private alertCtrl: AlertController,
+                  ) {
     //esto es lo mas importante
     //le pasas la data del irEvento(evento) toma la data del evento y la pasa con el navParams
     this.evento = this.navParams.get("data");
@@ -34,8 +41,19 @@ export class IreventoPage {
   }
 
   ionViewDidLoad() {
+    this.eventoP.getEmail().then(result =>{
+      this.getData(result)
+    });
     
   }
+
+   //metodo para obtener data del usuario 
+    //guardado en localstorage
+    getData(email) {
+      this.eventoP.getUserData(email).subscribe(res =>{
+        this.user = res.user;
+      })
+    }
 
    
   valorarPage(evento){
@@ -50,11 +68,12 @@ export class IreventoPage {
     if(arr.length <= 0){
       return arr.length;
     } else {
-      return _.mean(arr);
+      return this.redondearValores(_.mean(arr));
     }
   }
 
-  roundValue(value){
+  
+  redondearValores(value){
     const factor = Math.pow(10, 1);
     return Math.round(value * factor) / factor;
   }
@@ -68,7 +87,15 @@ export class IreventoPage {
     }
   }
 
+  asistire(evento){
+    this.eventoP.registerAsistente(evento, this.user)
+    .subscribe(res=>{
+     
+    })
 
+
+
+  }
   
 
 }

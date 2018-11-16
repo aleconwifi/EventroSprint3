@@ -17,10 +17,10 @@
 
 <ion-content padding>
     <span>
-            <button ion-button block class="btn1" (click)="valorarPage(evento)">Escribir Comentario</button>
+            <button ion-button block class="btn1" color="danger" (click)="valorarPage(evento)">Escribir Comentario</button>
           </span>
     <span>
-            <button ion-button block class="btn2">Asistire al evento</button>
+            <button ion-button block class="btn2" (click)="asistire(evento)">Asistire al evento</button>
           </span>
 
     <ion-card class="card1">
@@ -46,6 +46,14 @@
                 {{evento.categoria}}
             </p>
         </ion-card-content>
+    </ion-card>
+
+    <ion-card class="cardimage">
+        <img *ngIf="evento.imageVersion !==''" src="https://res.cloudinary.com/eventro/image/upload/v{{evento.imageVersion}}/{{evento.imageId}}">
+        <img *ngIf="evento.imageVersion ===''" src="https://placehold.it/150x100">
+
+
+
     </ion-card>
 
     <ion-card class="card2">
@@ -113,15 +121,36 @@
     </ion-card>
 
 
+
+
     <ion-card class="card1">
         <ion-card-content>
 
 
-
-
-
         </ion-card-content>
     </ion-card>
+
+    <p>Personas que asistiran</p>
+    <ion-item *ngFor="let asistentes of evento.asistentes">
+        <ion-row>
+            <ion-col col-2>
+                <ion-avatar item-start>
+                    <img *ngIf="asistentes.asistente" src="https://res.cloudinary.com/eventro/image/upload/v{{asistentes.asistente.imageVersion}}/{{asistentes.asistente.imageId}}">
+                </ion-avatar>
+            </ion-col>
+
+            <ion-col col-10 class="rowCol">
+                <h2 class="companyname" text-wrap>
+                    {{asistentes.asistente.fullname}}
+                </h2>
+
+            </ion-col>
+
+        </ion-row>
+    </ion-item>
+
+
+
 
 
 

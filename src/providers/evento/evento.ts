@@ -1,4 +1,3 @@
-import { Platform } from 'ionic-angular';
 
 import { Storage } from '@ionic/storage';
 
@@ -14,35 +13,29 @@ import { Observable } from 'rxjs/Observable';
 */
 @Injectable()
 export class EventoProvider {
-
-  email: any;
   
 
   constructor(public http: HttpClient,
               private storage: Storage,
-              private platform: Platform) {
-                this.platform.ready().then(()=>{
-                  this.getEmail();
-                });
+              )
+   {
+               
   }
 
   //a partir del email del localstorage, devolver el usuario
-  getUserData(): Observable<any>{
-      this.getEmail();
+  getUserData(email): Observable<any>{
 
       return this.http
-      .get(`http://localhost:3000/api/home/${this.email}`);
+      .get(`http://localhost:3000/api/home/${email}`);
   }
 
 
   //retorna el email que se guarda en el localstorage para 
   //saber quien crea el evento
-  getEmail(){
-    this.storage.get('useremail').then(value =>{
-        this.email = value;
-    });
+  async getEmail(){
+    return await this.storage.get('useremail');
   }
-
+  //metodo que conecta al post de eventos con el backend
   createEvento(nombre, ubicacion, fecha, hora, descripcion, categoria, userId?): Observable<any>{
     return this.http
     .post('http://localhost:3000/api/evento/create',{
@@ -73,6 +66,16 @@ export class EventoProvider {
     });
   }
 
+  registerAsistente(evento, user, role?): Observable<any>{
+    return this.http
+    .post('http://localhost:3000/api/register/asistente',{
+        evento : evento,
+        user: user,
+        role: role
+
+    });
+  }
+
   searchEvento(evento):  Observable<any>{
     return this.http
     .post('http://localhost:3000/api/search-evento',{
@@ -89,6 +92,22 @@ export class EventoProvider {
       .get('http://localhost:3000/api/eventos/mejores');
   }
 
+  uploadImage(user, image): Observable<any>{
+    return this.http
+      .post('http://localhost:3000/api/v1/perfil/upload',{
+        user: user,
+        image: image
+
+      });
+  }
+
+  uploadEvento(id, image): Observable<any>{
+    return this.http  
+      .post('http://localhost:3000/api/v1/evento/upload', {
+        evento: id,
+        image: image
+      });
+  }
  
 
 }

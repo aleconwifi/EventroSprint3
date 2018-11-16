@@ -4,11 +4,12 @@
         <div>
             <ion-row style="align-items: center">
                 <ion-col col-12 class="imgCol">
-                    <img class="user-avatar round" src="http://placehold.it/50x50">
+                    <img *ngIf="user" class="user-avatar round" src="https://res.cloudinary.com/eventro/image/upload/v{{user.imageVersion}}/{{user.imageId}}">
+
                 </ion-col>
             </ion-row>
             <ion-row style="justify-content: center">
-                <h3>Nombre</h3>
+                <h3 *ngIf="user">{{user.fullname}}</h3>
             </ion-row>
         </div>
         <ion-list no-lines>
@@ -18,8 +19,8 @@
       </button>
         </ion-list>
         <ion-list no-lines>
-            <button ion-item menuClose>
-                        <ion-icon name="settings" item-left></ion-icon>      
+            <button ion-item menuClose (click)="settings()">
+                        <ion-icon name="settings" item-left ></ion-icon>      
                         Ajustes</button>
             <button ion-item menuClose (click)="logout()">
             <ion-icon name="log-out" item-left></ion-icon>      

@@ -18,16 +18,25 @@ export class HomePage {
   user: any;
  
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,
-      private evento: EventoProvider) {
+  constructor(public navCtrl: NavController, 
+              public navParams: NavParams,
+              private evento: EventoProvider) {
 
   }
 
   ionViewDidLoad() {
-    this.evento.getUserData()
-    .subscribe(res =>{
+      this.evento.getEmail().then(result =>{
+        this.getData(result)
+      });
+   
+  }
+
+  //metodo para obtener data del usuario 
+    //guardado en localstorage
+  getData(email) {
+    this.evento.getUserData(email).subscribe(res =>{
       this.user = res.user;
-    });
+    })
   }
 
   openPage(){

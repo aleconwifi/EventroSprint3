@@ -1,25 +1,30 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, AfterViewInit } from '@angular/core';
 import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { Storage } from '@ionic/storage';
+import { EventoProvider } from '../providers/evento/evento';
 
 
 
 @Component({
   templateUrl: 'app.html'
 })
-export class MyApp {
+export class MyApp implements AfterViewInit {
   @ViewChild(Nav) nav: Nav;
 
   rootPage: string;
+  user: any;
 
   pages: any[];
 
   constructor(public platform: Platform, 
                 public statusBar: StatusBar,
                  public splashScreen: SplashScreen,
-                  private storage: Storage) {
+                  private storage: Storage,
+                  private evento: EventoProvider) {
+
+
     this.initializeApp();
 
     // used for an example of ngFor and navigation
@@ -30,26 +35,47 @@ export class MyApp {
       {title: 'Busqueda', component: 'SearchPage', icon: 'search' },
       {title: 'Los mejores', component: 'MejoresPage', icon: 'archive' },
       {title: 'Categorias', component: 'CategoriasPage', icon: 'heart' },
+      
     ];
 
   }
 
+  ngAfterViewInit(){}
+
   initializeApp() {
     this.platform.ready().then(() => {
-      // Okay, so the platform is ready and our plugins are available.
-      // Here you can do any higher level native things you might need.
+      
       this.statusBar.styleDefault();
       this.splashScreen.hide();
+
+      this.evento.getEmail().then(result => {
+        if(result === null){
+          this.nav.setRoot("LoginPage");
+        }
+
+        if(result !== null){
+          this.evento.getUserData(result)
+          .subscribe(res=>{
+            this.user = res.user;
+           });
+          this.nav.setRoot("HomePage");
+        }
+      });
+
       //revisa el email en el localstorage
-      this.storage.get('useremail').then(loggedIn=>{
+   /*  this.storage.get('useremail').then(loggedIn=>{
           if(loggedIn === null){
             this.nav.setRoot("LoginPage");
           }
 
           if(loggedIn !== null){
+            this.evento.getUserData()
+            .subscribe(res=>{
+              this.user = res.user;
+             })
             this.nav.setRoot("HomePage");
           }
-      });
+      });*/
     });
   }
   //para poner el back automatico a las paginas que no son home
@@ -66,4 +92,9 @@ export class MyApp {
     this.storage.remove('useremail');
     this.nav.setRoot("LoginPage");
   }
+
+  settings(){
+    this.nav.push("AjustesPage");
+  }
+
 }
