@@ -45,7 +45,7 @@ export class HomePage {
   }
 
   ircategorias(){
-    this.navCtrl.push("CategoriasPage");
+    this.navCtrl.push("EventosPage");
 
 
   }
