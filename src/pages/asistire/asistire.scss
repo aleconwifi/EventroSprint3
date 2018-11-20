@@ -1,9 +1,9 @@
-page-amigos {
+page-asistire {
     ion-content {
         ion-avatar img {
             border-radius: 0px !important;
-            width: 50px !important;
-            height: 50px !important;
+            width: 60px !important;
+            height: 60px !important;
             max-width: 100px;
             max-height: 100px;
         }
@@ -13,42 +13,40 @@ page-amigos {
             bottom: -3px !important;
             padding-bottom: 0px !important;
             color: color($colors, graycolor);
-            padding-left: 15px !important
-        }
-        .my-row {
-            margin-bottom: 0px !important;
+            padding-left: 15px !important;
         }
         .companyname {
             width: auto !important;
             color: #fc7100;
             font-weight: bold;
             font-size: 18px;
-            margin-bottom: -10px !important;
+            padding-left: 5px !important;
+        }
+        .iconClass.icon-md {
+            padding-left: 5px !important;
+            color: #fc7100;
+            margin-left: -3px !important;
         }
         .dataCol {
             padding: 0px;
-            margin-top: 4px;
-            float: left;
+            margin-top: 4px !important;
             width: auto !important;
-        }
-        .dataCol .time {
-            margin-left: -3px !important;
-            margin-top: 0px !important;
-        }
-        .iconClass.icon-md {
-            padding-right: 5px !important;
-            color: #fc7100;
-            margin-left: -3px !important;
         }
         .rating {
             padding: 0px !important;
             margin: 0px !important;
             margin-right: 5px !important;
         }
-        .avg p {
-            padding-bottom: 3px !important;
-            padding-top: 3px !important;
-            color: color($colors, graycolor);
+        .avg {
+            display: flex !important;
+        }
+        .account {
+            font-size: 20px !important;
+            color: #fc7100;
+        }
+        .name {
+            font-size: 16px !important;
+            color: #fc7100;
         }
     }
 }

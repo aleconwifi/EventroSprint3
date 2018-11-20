@@ -44,7 +44,11 @@ export class HomePage {
   }
 
   reviewPage(){
-    this.navCtrl.push("EventosPage");
+    this.navCtrl.push("AsistirePage");
+  }
+
+  MejoresPage(){
+    this.navCtrl.push("MejoresPage");
   }
 
   iraSearch(){

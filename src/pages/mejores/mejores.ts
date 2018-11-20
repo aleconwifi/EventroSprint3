@@ -23,11 +23,15 @@ export class MejoresPage {
   }
 
   ionViewDidLoad() {
-    this.evento.getMejores()
+    this.evento.leaderBoard()
     .subscribe(res=>{
-      this.eventos =res.result;
+      this.eventos = res.result
 
     })
+  }
+
+  Irevento(evento){
+    this.navCtrl.push("IreventoPage", {"data": evento});
   }
 
 }

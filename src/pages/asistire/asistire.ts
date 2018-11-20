@@ -4,7 +4,7 @@ import { EventoProvider } from '../../providers/evento/evento';
 import { Camera, CameraOptions } from '@ionic-native/camera';
 
 /**
- * Generated class for the AjustesPage page.
+ * Generated class for the AsistirePage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -12,12 +12,13 @@ import { Camera, CameraOptions } from '@ionic-native/camera';
 
 @IonicPage()
 @Component({
-  selector: 'page-ajustes',
-  templateUrl: 'ajustes.html',
+  selector: 'page-asistire',
+  templateUrl: 'asistire.html',
 })
-export class AjustesPage {
+export class AsistirePage{
 
   user: any;
+  rating: number;
   imagePath: string;
 
   constructor(public navCtrl: NavController, 
@@ -26,7 +27,6 @@ export class AjustesPage {
                 private camera: Camera) {
   }
 
-
   ionViewDidEnter() {}
 
   ionViewDidLoad() {
@@ -34,6 +34,10 @@ export class AjustesPage {
       this.getData(result)
     });
     
+  }
+
+  Irevento(evento){
+    this.navCtrl.push("IreventoPage", {"data": evento});
   }
 
    //metodo para obtener data del usuario 

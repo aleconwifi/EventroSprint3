@@ -1,3 +1,101 @@
 page-dias {
-
+    .content {
+        background: linear-gradient(48deg, rgba(255, 217, 30, 1) 0%, rgba(255, 166, 0, 0.8) 28%, rgba(245, 44, 44, 0.75) 93%, rgba(245, 44, 44, 1) 100%);
+    }
+    .content-item1 {
+        background: transparent;
+        margin: 0px auto !important;
+        text-align: center;
+    }
+    .content-card1 {
+        padding: 5px;
+        margin: 0px auto !important;
+        text-align: center;
+        border-radius: 2%;
+        margin: 10px 10px 5px 10px !important;
+    }
+    .cardItem {
+        padding-left: 10px !important;
+    }
+    .ionAvatar {
+        margin-left: 0px !important;
+    }
+    .content-card1 .postImage {
+        width: 88%;
+        margin: 0 auto;
+        text-align: center;
+    }
+    .content-card1 .username {
+        font-weight: bold;
+        color: #fc7100;
+        padding: 0px !important;
+        text-align: left !important;
+        margin-top: 5px;
+        padding-top: 5px !important;
+    }
+    .content-card1 .postTime {
+        font-size: 14px !important;
+    }
+    .content-card1 .postCity {
+        font-size: 14px !important;
+    }
+    .content-card1 .post {
+        font-size: 1.5rem !important;
+        text-align: left;
+        margin-left: -7px;
+        margin-top: 5px;
+    }
+    .item-inner {
+        border: none !important;
+    }
+    .fab {
+        border: 2px double #fc7100;
+        background: #fc7100 !important;
+    }
+    .noResultItem {
+        background: transparent;
+        position: absolute;
+        color: #fff;
+        top: 40%;
+        left: 50%;
+        padding: 15px;
+        -ms-transform: translateX(-50%) translateY(-50%);
+        -webkit-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+        height: 100px;
+    }
+    .noResult {
+        color: #fff !important;
+        text-align: center;
+        font-size: 18px;
+        font-weight: bold;
+        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    }
+    .postImage {
+        display: block;
+        max-width: 200px;
+        max-height: 250px;
+        width: auto;
+        height: auto;
+        text-align: left;
+        padding: 0px;
+        margin: 0px;
+        margin-left: 10px !important;
+    }
+    .iconClass.icon-md {
+        padding-left: 5px !important;
+        color: #fc7100;
+        margin-left: -3px !important;
+    }
+    .rating {
+        padding: 0px !important;
+        margin: 0px !important;
+        margin-right: 5px !important;
+    }
+    .avg {
+        display: flex !important;
+    }
+    .notLiked {
+        color: #2e2c2c !important;
+    }
 }

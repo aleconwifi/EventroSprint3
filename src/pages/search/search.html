@@ -20,9 +20,36 @@
 
     <ion-list *ngIf="showList">
         <ion-item *ngFor="let evento of searchResults">
+
             <h2>
                 <button ion-item *ngIf="results && showResults.length > 0" (click)="iraEvento(evento)">
-                  {{evento.nombre}}
+                        <ion-row>
+                                <ion-col col-2>
+                                        <ion-avatar item-start>
+                                            <img *ngIf="evento.imageVersion !==''" src="https://res.cloudinary.com/eventro/image/upload/v{{evento.imageVersion}}/{{evento.imageId}}">
+                                            <img *ngIf="evento.imageVersion ===''" src="https://placehold.it/10x10">
+                                        </ion-avatar>
+                                    </ion-col>
+                        
+                                    <ion-col col-10 class="rowCol">
+                                            <h2 class="companyname" text-wrap>
+                                                    {{evento.nombre}}
+                                                </h2>
+                                                <ion-col class="dataCol">
+                                                        <ion-row>
+                                                            <ion-col col-12 text-wrap>
+                                                                <span>
+                                                          <ion-icon name="archive" class="iconClass"></ion-icon>
+                                                          {{evento.categoria}}
+                                                        </span>
+
+                                                    </ion-col>
+                                                </ion-row>
+                                            </ion-col>
+                                      
+                                </ion-col>
+                        </ion-row>
+
                 </button>
             </h2>
 

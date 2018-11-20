@@ -26,7 +26,7 @@ export class EventoProvider {
   getUserData(email): Observable<any>{
 
       return this.http
-      .get(`http://localhost:3000/api/home/${email}`);
+      .get(`https://backendeventro.herokuapp.com/api/home/${email}`);
   }
 
 
@@ -38,7 +38,7 @@ export class EventoProvider {
   //metodo que conecta al post de eventos con el backend
   createEvento(nombre, ubicacion, fecha, hora, descripcion, categoria, userId?): Observable<any>{
     return this.http
-    .post('http://localhost:3000/api/evento/create',{
+    .post('https://backendeventro.herokuapp.com/api/evento/create',{
         nombre,
         ubicacion,
         fecha,
@@ -51,12 +51,12 @@ export class EventoProvider {
 
   getEventos(): Observable<any>{
     return this.http
-      .get('http://localhost:3000/api/eventos/all');
+      .get('https://backendeventro.herokuapp.com/api/eventos/all');
   }
 
   addComentario(eventoId, duracion, horario, aporte, review, userId): Observable<any>{
     return this.http
-    .post('http://localhost:3000/api/evento/comentario',{
+    .post('https://backendeventro.herokuapp.com/api/evento/comentario',{
         eventoId,
         duracion,
         horario,
@@ -68,7 +68,7 @@ export class EventoProvider {
 
   registerAsistente(evento, user, role?): Observable<any>{
     return this.http
-    .post('http://localhost:3000/api/register/asistente',{
+    .post('https://backendeventro.herokuapp.com/api/register/asistente',{
         evento : evento,
         user: user,
         role: role
@@ -76,9 +76,26 @@ export class EventoProvider {
     });
   }
 
+  registerEvento(evento, user): Observable<any>{
+    return this.http
+    .post('https://backendeventro.herokuapp.com/api/register/asistire',{
+        evento : evento,
+        user: user,
+    });
+  }
+
   searchEvento(evento):  Observable<any>{
     return this.http
-    .post('http://localhost:3000/api/search-evento',{
+    .post('https://backendeventro.herokuapp.com/api/search-evento',{
+      evento: evento
+     
+  });
+
+}
+
+  searchEvento2(evento):  Observable<any>{
+    return this.http
+    .post('https://backendeventro.herokuapp.com/api/search-evento2',{
       evento: evento
      
   });
@@ -87,14 +104,11 @@ export class EventoProvider {
 
   }
 
-  getMejores(): Observable<any>{
-    return this.http
-      .get('http://localhost:3000/api/eventos/mejores');
-  }
+ 
 
   uploadImage(user, image): Observable<any>{
     return this.http
-      .post('http://localhost:3000/api/v1/perfil/upload',{
+      .post('https://backendeventro.herokuapp.com/api/v1/perfil/upload',{
         user: user,
         image: image
 
@@ -103,10 +117,17 @@ export class EventoProvider {
 
   uploadEvento(id, image): Observable<any>{
     return this.http  
-      .post('http://localhost:3000/api/v1/evento/upload', {
+      .post('https://backendeventro.herokuapp.com/api/v1/evento/upload', {
         evento: id,
         image: image
       });
+  }
+
+ 
+
+  leaderBoard(): Observable<any>{
+    return this.http
+      .get('https://backendeventro.herokuapp.com/api/eventos/leaderboard');
   }
  
 

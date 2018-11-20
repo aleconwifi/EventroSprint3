@@ -30,15 +30,20 @@ export class MyApp implements AfterViewInit {
     // used for an example of ngFor and navigation
     this.pages = [
       {title: 'Home', component: 'HomePage', icon: 'home' },
-      {title: 'Crear Evento', component: 'CreareventoPage', icon: 'add-circle' },
-      {title: 'Eventos', component: 'EventosPage', icon: 'list-box' },
+      {title: 'Eventos', component: 'DiasPage', icon: 'list-box' },
       {title: 'Busqueda', component: 'SearchPage', icon: 'search' },
-      {title: 'Los mejores', component: 'MejoresPage', icon: 'archive' },
-      {title: 'Categorias', component: 'CategoriasPage', icon: 'heart' },
+      {title: 'Los mejores', component: 'MejoresPage', icon: 'trophy' },
+      {title: 'Categorias', component: 'CategoriasPage', icon: 'list-box' },
+      {title: 'Asistiré', component: 'AsistirePage', icon: 'heart' },
+      {title: 'Crear Evento', component: 'CreareventoPage', icon: 'add-circle' },
       
     ];
 
   }
+
+  
+
+
 
   ngAfterViewInit(){}
 

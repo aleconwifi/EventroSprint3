@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { EventoProvider } from '../../providers/evento/evento';
 
 /**
  * Generated class for the AmigosPage page.
@@ -15,11 +16,15 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class AmigosPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  evento: any;
+
+  constructor(public navCtrl: NavController, 
+              public navParams: NavParams) {
+    this.evento = this.navParams.get("eventoData");
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad AmigosPage');
+   
   }
 
 }

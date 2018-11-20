@@ -18,12 +18,14 @@ export class SearchPage {
 
   nombre: string;
 
+
   //variables mostrar resultados de la busqueda
   searchResults = [];
   showList = true;
   showResults = [];
   results = false;
   noResults = false;
+
 
 
 
@@ -52,10 +54,11 @@ export class SearchPage {
           this.results = false;
           this.noResults = true;
           this.showResults = res.results;
-          this.searchResults = [{"nombre": "No encontrado"}]
+          this.searchResults = [{"nombre": "No encontrado"}];
         }
       });
 
+    
   }
 //dejar de mostrar lista
   onCancel(event){

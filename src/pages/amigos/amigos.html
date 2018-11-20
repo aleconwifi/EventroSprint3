@@ -6,13 +6,32 @@
 -->
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>amigos</ion-title>
-  </ion-navbar>
+    <ion-navbar>
+        <ion-title>Personas que asistiran</ion-title>
+    </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
+<ion-content>
+
+    <ion-item *ngFor="let asistentes of evento.asistentes">
+        <ion-row>
+            <ion-col col-2>
+                <ion-avatar item-start>
+                    <img *ngIf="asistentes.asistente" src="https://res.cloudinary.com/eventro/image/upload/v{{asistentes.asistente.imageVersion}}/{{asistentes.asistente.imageId}}">
+                </ion-avatar>
+            </ion-col>
+
+            <ion-col col-10 class="rowCol">
+                <h2 class="companyname" text-wrap>
+                    {{asistentes.asistente.fullname}}
+                </h2>
+
+            </ion-col>
+
+        </ion-row>
+    </ion-item>
+
 
 </ion-content>

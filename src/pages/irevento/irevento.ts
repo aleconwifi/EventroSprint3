@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController, ToastController } from 'ionic-angular';
 import * as _ from 'lodash';
 import { EventoProvider } from '../../providers/evento/evento';
 
@@ -32,6 +32,7 @@ export class IreventoPage {
                  public navParams: NavParams,
                   private eventoP: EventoProvider,
                   private alertCtrl: AlertController,
+                  private toastCtrl: ToastController,
                   ) {
     //esto es lo mas importante
     //le pasas la data del irEvento(evento) toma la data del evento y la pasa con el navParams
@@ -64,6 +65,10 @@ export class IreventoPage {
     this.navCtrl.push("VercomentariosPage", {"eventoData": evento});
   }
 
+  verAsistentes(evento){
+    this.navCtrl.push("AmigosPage", {"eventoData": evento});
+  }
+
   averageRating(arr){
     if(arr.length <= 0){
       return arr.length;
@@ -91,11 +96,57 @@ export class IreventoPage {
     this.eventoP.registerAsistente(evento, this.user)
     .subscribe(res=>{
      
-    })
+    });
+
+    this.eventoP.registerEvento (evento, this.user)
+    .subscribe(res=>{
+      if(res.message){
+        let toast = this.toastCtrl.create({
+          message: res.message,
+          duration: 2000,
+          position: 'top'
+        });
+
+  
+        toast.present();
+      }
+
+      if(res.error){
+        let toast = this.toastCtrl.create({
+          message: res.error,
+          duration: 3000,
+          position: 'top'
+        });
+  
+        toast.present();
+      }
+     
+    });
+
+    this.navCtrl.setRoot("HomePage");
+
+  }
+
+
+
+
+
+
+  asisti(evento){
+  this.eventoP.registerEvento (evento, this.user)
+  .subscribe(res=>{
+     
+    });
+
+    
+
 
 
 
   }
+
+
+
   
 
 }

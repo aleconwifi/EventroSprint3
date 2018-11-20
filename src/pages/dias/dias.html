@@ -1,18 +1,104 @@
-<!--
-  Generated template for the DiasPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
-
-  <ion-navbar>
-    <ion-title>dias</ion-title>
-  </ion-navbar>
+    <ion-navbar>
+        <ion-title>Eventos</ion-title>
+    </ion-navbar>
 
 </ion-header>
 
+<ion-content class="content">
+    <!--<ion-item *ngFor="let evento of eventos" (click)="Irevento(evento)">
+        <ion-row>
+            <ion-col col-2>
+                <ion-avatar item-start>
+                    <img *ngIf="evento.imageVersion !==''" src="https://res.cloudinary.com/eventro/image/upload/v{{evento.imageVersion}}/{{evento.imageId}}">
+                    <img *ngIf="evento.imageVersion ===''" src="https://placehold.it/10x10">
 
-<ion-content padding>
+
+                </ion-avatar>
+            </ion-col>
+
+            <ion-col col-10 class="rowCol">
+                <h2 class="companyname" text-wrap>
+                    {{evento.nombre}}
+                </h2>
+
+                <ion-col class="dataCol">
+                    <ion-row>
+                        <ion-col col-12 text-wrap>
+                            <span>
+                      <ion-icon name="archive" class="iconClass"></ion-icon>
+                      {{evento.categoria}}
+                    </span>
+                        </ion-col>
+                        <ion-col col-12 text-wrap>
+                            <ion-icon name="pin" class="iconClass"></ion-icon>
+                            {{evento.fecha}}, {{evento.hora}}
+                        </ion-col>
+
+                        <ion-col col-12 class="rating">
+                            <span class="avg">
+                            <rating [ngModel]="averageRating(evento.aporteTotal)" readOnly="true" max="5" emptyStarIconName="star-outline" halfStarIconName="star-half" starIconName="star" nullable="false"></rating>
+                            ({{averageRating(evento.aporteTotal)}})
+                           </span>
+
+                        </ion-col>
+                    </ion-row>
+                </ion-col>
+
+            </ion-col>
+
+        </ion-row>
+    </ion-item>-->
+
+
+    <ion-list>
+        <ion-item class="content-item1" *ngFor="let evento of eventos" (click)="Irevento(evento)">
+            <ion-card class="content-card1">
+                <ion-item class="cardItem">
+                    <ion-avatar class="ionAvatar" item-start>
+                        <img class="userImg" src="https://res.cloudinary.com/eventro/image/upload/v{{evento.admin.imageVersion}}/{{evento.admin.imageId}}">
+                    </ion-avatar>
+
+                    <h2 text-wrap class="username">
+                        {{evento.nombre}}
+                    </h2>
+                    <p class="postTime">{{evento.ubicacion}}</p>
+                    <p text-wrap class="postCity">
+                        {{evento.fecha}}, {{evento.hora}}
+                    </p>
+                </ion-item>
+
+                <div style="width: 100%;">
+                    <img *ngIf="evento.imageVersion !==''" class="postImage" src="https://res.cloudinary.com/eventro/image/upload/v{{evento.imageVersion}}/{{evento.imageId}}">
+                    <img *ngIf="evento.imageVersion ===''" class="postImage" src="https://placehold.it/150x100">
+                </div>
+
+
+                <ion-card-content>
+                    <p text-wrap class="post">{{evento.descripcion}}</p>
+                </ion-card-content>
+
+
+
+                <ion-row>
+                    <ion-col>
+                        <button ion-button icon-left clear>
+                      
+                            <div>Ver mas...</div>
+                          </button>
+                    </ion-col>
+                    <ion-col>
+                        <span class="avg">
+                                        <rating [ngModel]="averageRating(evento.aporteTotal)" readOnly="true" max="5" emptyStarIconName="star-outline" halfStarIconName="star-half" starIconName="star" nullable="false"></rating>
+                                        ({{averageRating(evento.aporteTotal)}})
+                                       </span>
+                    </ion-col>
+                </ion-row>
+
+
+            </ion-card>
+
+        </ion-item>
+    </ion-list>
 
 </ion-content>

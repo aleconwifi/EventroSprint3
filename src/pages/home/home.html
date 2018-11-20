@@ -23,7 +23,7 @@
         </ion-card-header>
         <ion-card-content>
             <p class="text-content">
-                Ve los eventos disponibles el dia de hoy
+                Ve los eventos disponibles
             </p>
 
             <button class="btn1" ion-button block (click)="ircategorias()">Ver</button>
@@ -47,14 +47,28 @@
     <ion-card class="card3">
         <ion-icon name="heart"></ion-icon>
         <ion-card-header class="header">
-            Califica los eventos
+            Marcados
         </ion-card-header>
         <ion-card-content>
             <p class="text-content">
-                Califica los enventos y aporta tus recomendaciones a este
+                Ver los eventos que marqué para asistir
             </p>
 
-            <button class="btn3" ion-button block (click)="reviewPage()">Valorar</button>
+            <button class="btn3" ion-button block (click)="reviewPage()">Asistiré a...</button>
+        </ion-card-content>
+    </ion-card>
+
+    <ion-card class="card4">
+        <ion-icon name="trophy"></ion-icon>
+        <ion-card-header class="header">
+            Ver los mejores eventos
+        </ion-card-header>
+        <ion-card-content>
+            <p class="text-content">
+                Ve los mejores eventos que han calificado otros usuarios
+            </p>
+
+            <button class="btn3" ion-button block (click)="MejoresPage()">Ver</button>
         </ion-card-content>
     </ion-card>
 

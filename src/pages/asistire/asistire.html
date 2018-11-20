@@ -1,0 +1,82 @@
+<!--
+  Generated template for the AjustesPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+    <ion-navbar>
+        <ion-title>Mis eventos</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <ion-list>
+        <ion-list-header>
+            <ion-avatar item-start>
+                <img *ngIf="user" src="https://res.cloudinary.com/eventro/image/upload/v{{user.imageVersion}}/{{user.imageId}}">
+            </ion-avatar>
+            <p>
+                Cuenta
+            </p>
+            <p text-wrap class="name" *ngIf="user">{{user.fullname}}</p>
+
+            <button ion-button item-end color="danger" (click)="agregarImagen()">Agregar imagen</button>
+
+        </ion-list-header>
+    </ion-list>
+
+    <ion-list *ngIf="user">
+        <ion-list-header class="account">Eventos que asistiré </ion-list-header>
+        <!-- <ion-item *ngFor="let userevento of user.asistires">
+            <ion-avatar item-start>
+                <img src="https://res.cloudinary.com/eventro/image/upload/v{{userevento.asistire.imageVersion}}/{{userevento.asistire.imageId}}">
+
+            </ion-avatar>
+
+            <ion-label class="name">{{userevento.asistire.nombre}}</ion-label>
+
+
+        </ion-item>-->
+        <ion-item *ngFor="let evento of  user.asistires">
+            <ion-row>
+                <ion-col col-2>
+                    <ion-avatar item-start>
+                        <img *ngIf="evento.asistire.imageVersion !==''" src="https://res.cloudinary.com/eventro/image/upload/v{{evento.asistire.imageVersion}}/{{evento.asistire.imageId}}">
+                        <img *ngIf="evento.asistire.imageVersion ===''" src="https://placehold.it/10x10">
+
+
+                    </ion-avatar>
+                </ion-col>
+
+                <ion-col col-10 class="rowCol">
+                    <h2 class="companyname" text-wrap>
+                        {{evento.asistire.nombre}}
+                    </h2>
+
+                    <ion-col class="dataCol">
+                        <ion-row>
+                            <ion-col col-12 text-wrap>
+                                <span>
+                          <ion-icon name="pin" class="iconClass"></ion-icon>
+                          {{evento.asistire.ubicacion}}
+                        </span>
+                            </ion-col>
+                            <ion-col col-12 text-wrap>
+                                <ion-icon name="time" class="iconClass"></ion-icon>
+                                {{evento.asistire.fecha}}, {{evento.asistire.hora}}
+                            </ion-col>
+
+                        </ion-row>
+                    </ion-col>
+
+                </ion-col>
+
+            </ion-row>
+        </ion-item>
+    </ion-list>
+
+</ion-content>

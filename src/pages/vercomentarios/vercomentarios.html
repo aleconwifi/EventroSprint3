@@ -6,7 +6,9 @@
 
 
 <ion-content>
+
     <ion-item *ngFor="let rating of evento.rating" (click)="mostrar(rating)">
+
         <ion-row>
             <ion-col col-2>
                 <ion-avatar item-start>
@@ -32,7 +34,8 @@
              <newrating [ratingnumber]="rating.userTotal"></newrating>
 
                   <p text-wrap>
-                        {{rating.review.substr(0, 20)}}...
+                     <!--   {{rating.review.substr(0, 20)}}...-->
+                     {{rating.review}}
 
                   </p>
                 </span>

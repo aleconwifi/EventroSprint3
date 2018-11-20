@@ -13,7 +13,7 @@ export class RegisterProvider {
   //crea un nuevo usuario y por el url lo lleva al controller del backend
   registerUser(fullname, email, password): Observable<any>{
     return this.http
-    .post('http://localhost:3000/api/signup/user',{
+    .post('https://backendeventro.herokuapp.com/api/signup/user',{
         fullname: fullname,
         email: email,
         password: password
@@ -24,7 +24,7 @@ export class RegisterProvider {
 
   loginUser(email, password): Observable<any>{
     return this.http
-      .post('http://localhost:3000/api/login/user', {
+      .post('https://backendeventro.herokuapp.com/api/login/user', {
         email: email,
         password: password
       });

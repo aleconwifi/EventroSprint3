@@ -66,7 +66,7 @@ export class ValoracionesPage {
 
       });
 
-      this.navCtrl.setRoot("EventosPage");
+      this.navCtrl.setRoot("HomePage");
   }
 
   //obtener el id del usuario

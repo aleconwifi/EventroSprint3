@@ -1,20 +1,27 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
 
 
 @Injectable()
 export class SlideProvider {
+
+  eventos = [];
+
+  getEventos(): Observable<any>{
+    return this.http
+      .get('https://backendeventro.herokuapp.com/api/eventos/all');
+  }
 
   private data = [
     {
       category: 'Cultural',
       expanded: true,
       products:[
-        {id: 0, name: 'Cervezada', ubicacion: 'Polar'},
-        {id: 1, name: 'Parranda Navidena', ubicacion: 'Polar'},
-        {id: 2, name: 'Toque de la Coral', ubicacion: 'Mendoza'},
-        {id: 3, name: 'ROCK Festival', ubicacion: 'Sala de Musica'},
-
+        {id: 0, name: 'Partido Volibol', ubicacion: 'Futbol'},
+        {id: 1, name: 'Parranda Basket', ubicacion: 'Polar'},
+        {id: 2, name: 'Caimanera mujeres', ubicacion: 'cancha futbol '},
+        {id: 3, name: 'Caimanera mujeres', ubicacion: 'cancha futbol '},
       ]
     },
     {

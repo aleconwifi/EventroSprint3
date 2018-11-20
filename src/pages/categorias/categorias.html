@@ -1,53 +1,85 @@
-<!--
-  Generated template for the CategoriasPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
 
     <ion-navbar>
-        <ion-title>categorias</ion-title>
+        <ion-title>Busqueda por categorias</ion-title>
     </ion-navbar>
 
 </ion-header>
 
 
-<ion-content>
-    <div *ngFor="let cat of items" class="category-block">
-
-        <ion-row no-padding class="category-banner">
-            <ion-col text-left button tappable (click)="cat.expanded =! cat.expanded" align-self-center>
-                {{cat.category}}
-
-            </ion-col>
-        </ion-row>
+<ion-content padding>
+    <ion-searchbar [(ngModel)]="nombre" [showCancelButton]="true" (keyup)="searchEvento2()" (ionCancel)="onCancel($event)" (ionClear)="onClear($event)">
 
 
-        <ion-slides spaceBetween="10" slidesPerView="1.6" centeredSlides="true">
+    </ion-searchbar>
 
+    <ion-card class="card1">
+        <ion-card-content>
+            <ion-card-title>
+                Coloca En la Barra La Categoria mas deseable
+            </ion-card-title>
 
-            <ion-slide *ngFor="let product of cat.products">
-                <div *ngIf="cat.expanded">
-                    <ion-card>
-                        <ion-card-header>
-                            <ion-card-title>
-                                {{product.name}}
-                            </ion-card-title>
-                            <ion-card-content>
-                                <img src="https://via.placeholder.com/300x300">
-                                <button ion-button expand="full">
-                                    Ir al evento
-                            </button>
+            <p class="pCity">
+                <span class="pSpan">
+                      Deportivo
+                    </span>
+            </p>
 
-                            </ion-card-content>
-                        </ion-card-header>
-                    </ion-card>
-                </div>
-            </ion-slide>
-        </ion-slides>
+            <p class="pCity">
+                <span class="pSpan">
+                        Cultural
+                        </span>
+            </p>
 
-    </div>
+            <p class="pSector">
+                Emprendimiento
+            </p>
 
+            <p class="pSite">
+                Autoridades
+            </p>
+        </ion-card-content>
+    </ion-card>
+
+    <ion-list *ngIf="showList">
+        <ion-item *ngFor="let evento of searchResults">
+
+            <h2>
+                <button ion-item *ngIf="results && showResults.length > 0" (click)="iraEvento(evento)">
+                            <ion-row>
+                                    <ion-col col-2>
+                                            <ion-avatar item-start>
+                                                <img *ngIf="evento.imageVersion !==''" src="https://res.cloudinary.com/eventro/image/upload/v{{evento.imageVersion}}/{{evento.imageId}}">
+                                                <img *ngIf="evento.imageVersion ===''" src="https://placehold.it/10x10">
+                                            </ion-avatar>
+                                        </ion-col>
+                            
+                                        <ion-col col-10 class="rowCol">
+                                                <h2 class="companyname" text-wrap>
+                                                        {{evento.nombre}}
+                                                    </h2>
+                                                    <ion-col class="dataCol">
+                                                            <ion-row>
+                                                                <ion-col col-12 text-wrap>
+                                                                    <span>
+                                                              <ion-icon name="archive" class="iconClass"></ion-icon>
+                                                              {{evento.categoria}}
+                                                            </span>
+    
+                                                        </ion-col>
+                                                    </ion-row>
+                                                </ion-col>
+                                          
+                                    </ion-col>
+                            </ion-row>
+    
+                    </button>
+            </h2>
+
+            <button ion-item *ngIf="noResults && showResults.length === 0">
+                    {{evento.nombre}}
+                  </button>
+        </ion-item>
+    </ion-list>
 
 </ion-content>

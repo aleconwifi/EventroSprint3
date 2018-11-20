@@ -16,12 +16,19 @@
 
 
 <ion-content padding>
+
+
     <span>
             <button ion-button block class="btn1" color="danger" (click)="valorarPage(evento)">Escribir Comentario</button>
           </span>
     <span>
             <button ion-button block class="btn2" (click)="asistire(evento)">Asistire al evento</button>
           </span>
+
+    <span>
+                <button ion-button block class="btn1" (click)="verAsistentes(evento)">Ver personas que asistiran</button>
+     </span>
+
 
     <ion-card class="card1">
         <ion-card-content>
@@ -30,10 +37,17 @@
             </ion-card-title>
 
             <p class="pCity">
-                <ion-icon name="pin" class="iconClass"></ion-icon>
+                <ion-icon name="time" class="iconClass"></ion-icon>
                 <span class="pSpan">
                   {{evento.fecha}}, {{evento.hora}}
                 </span>
+            </p>
+
+            <p class="pCity">
+                <ion-icon name="pin" class="iconClass"></ion-icon>
+                <span class="pSpan">
+                      {{evento.ubicacion}}
+                    </span>
             </p>
 
             <p class="pSector">
@@ -119,37 +133,6 @@
 
         </ion-card-content>
     </ion-card>
-
-
-
-
-    <ion-card class="card1">
-        <ion-card-content>
-
-
-        </ion-card-content>
-    </ion-card>
-
-    <p>Personas que asistiran</p>
-    <ion-item *ngFor="let asistentes of evento.asistentes">
-        <ion-row>
-            <ion-col col-2>
-                <ion-avatar item-start>
-                    <img *ngIf="asistentes.asistente" src="https://res.cloudinary.com/eventro/image/upload/v{{asistentes.asistente.imageVersion}}/{{asistentes.asistente.imageId}}">
-                </ion-avatar>
-            </ion-col>
-
-            <ion-col col-10 class="rowCol">
-                <h2 class="companyname" text-wrap>
-                    {{asistentes.asistente.fullname}}
-                </h2>
-
-            </ion-col>
-
-        </ion-row>
-    </ion-item>
-
-
 
 
 
