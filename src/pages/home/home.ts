@@ -31,6 +31,7 @@ export class HomePage {
    
   }
 
+
   //metodo para obtener data del usuario 
     //guardado en localstorage
   getData(email) {
@@ -58,7 +59,7 @@ export class HomePage {
   }
 
   ircategorias(){
-    this.navCtrl.push("EventosPage");
+    this.navCtrl.push("DiasPage");
 
 
   }

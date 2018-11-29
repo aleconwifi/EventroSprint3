@@ -1,4 +1,4 @@
-page-categorias {
+page-meses {
     ion-content {
         background: linear-gradient(48deg, rgba(255, 217, 30, 1) 0%, rgba(255, 166, 0, 0.8) 28%, rgba(245, 44, 44, 0.75) 93%, rgba(245, 44, 44, 1) 100%);
         color: color($colors, light);
@@ -29,8 +29,8 @@ page-categorias {
         .card2 {
             border: none !important;
             border-radius: 5%;
-            background: rgba(80, 3, 0, 0.8);
-            height: auto !important;
+            background: rgba(70, 224, 204, 0.8);
+            height: 250px;
             margin-bottom: 20px !important;
         }
         .card3 {

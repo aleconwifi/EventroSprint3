@@ -1,50 +1,29 @@
 <ion-header>
 
     <ion-navbar>
-        <ion-title>Busqueda por categorias</ion-title>
+        <ion-title>Busqueda por fecha</ion-title>
     </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-    <ion-searchbar [(ngModel)]="nombre" [showCancelButton]="true" (keyup)="searchEvento2()" (ionCancel)="onCancel($event)" (ionClear)="onClear($event)">
+    <ion-searchbar [(ngModel)]="nombre" [showCancelButton]="true" (keyup)="searchEvento3()" (ionCancel)="onCancel($event)" (ionClear)="onClear($event)">
 
 
     </ion-searchbar>
-
     <ion-card class="card2">
+        <ion-icon name="calendar"></ion-icon>
+        <ion-card-header class="header">
+            Buscar
+        </ion-card-header>
         <ion-card-content>
-            <ion-card-header class="header">
-                Categorías
-            </ion-card-header>
-            <ion-card-content>
-                <p class="text-content">
-                    Busca los eventos escribiendo la categoría en la barra
-                </p>
-            </ion-card-content>
-
-            <p class="pCity">
-                <span class="pSpan">
-                      Deportivo
-                    </span>
-            </p>
-
-            <p class="pCity">
-                <span class="pSpan">
-                        Cultural
-                        </span>
-            </p>
-
-            <p class="pSector">
-                Emprendimiento
-            </p>
-
-            <p class="pSite">
-                Autoridades
+            <p class="text-content">
+                Busca los eventos escribiendo el dia o mes del evento
             </p>
         </ion-card-content>
     </ion-card>
+
 
     <ion-list *ngIf="showList">
         <ion-item *ngFor="let evento of searchResults">
@@ -67,7 +46,7 @@
                                                             <ion-row>
                                                                 <ion-col col-12 text-wrap>
                                                                     <span>
-                                                              {{evento.categoria}}
+                                                              {{evento.fecha}}
                                                             </span>
     
                                                         </ion-col>

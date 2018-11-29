@@ -23,7 +23,7 @@ export class EventoProvider {
   }
 
   //a partir del email del localstorage, devolver el usuario
-  getUserData(email): Observable<any>{
+  getUserData(email?): Observable<any>{
 
       return this.http
       .get(`https://backendeventro.herokuapp.com/api/home/${email}`);
@@ -96,6 +96,17 @@ export class EventoProvider {
   searchEvento2(evento):  Observable<any>{
     return this.http
     .post('https://backendeventro.herokuapp.com/api/search-evento2',{
+      evento: evento
+     
+  });
+
+  
+
+  }
+
+  searchEvento3(evento):  Observable<any>{
+    return this.http
+    .post('https://backendeventro.herokuapp.com/api/search-evento3',{
       evento: evento
      
   });

@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 import { EventoProvider } from '../../providers/evento/evento';
 import { Camera, CameraOptions } from '@ionic-native/camera';
+import * as _ from 'lodash'; //libreria para calcular el promedio
 
 /**
  * Generated class for the AsistirePage page.
@@ -24,6 +25,7 @@ export class AsistirePage{
   constructor(public navCtrl: NavController, 
               public navParams: NavParams,
                 private evento : EventoProvider,
+                private toastCrtl: ToastController,
                 private camera: Camera) {
   }
 
@@ -36,9 +38,6 @@ export class AsistirePage{
     
   }
 
-  Irevento(evento){
-    this.navCtrl.push("IreventoPage", {"data": evento});
-  }
 
    //metodo para obtener data del usuario 
     //guardado en localstorage
@@ -96,4 +95,26 @@ export class AsistirePage{
         });
     })
   }
+
+  averageRating(number){
+    if(number.length<=0){
+      this.rating = number.length;
+    } else{
+      this.rating = _.mean(number)
+    }
+    return this.redondearValores(this.rating);
+  }
+
+
+
+  redondearValores(value){
+    const factor = Math.pow(10, 1);
+    return Math.round(value * factor) / factor;
+  }
+
+  Irevento(evento){
+    this.navCtrl.push("MiseventoasistirPage", {"data": evento.asistire});
+  }
+
+
 }

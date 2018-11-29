@@ -25,20 +25,20 @@
                     <ion-row>
                         <ion-col col-12 text-wrap>
                             <span class="time">
-                                 {{GetReviewTime(rating.created)}}
-                                </span>
+                                         {{GetReviewTime(rating.created)}}
+                                        </span>
                         </ion-col>
 
                         <ion-col col-12 class="rating">
                             <span class="avg">
-             <newrating [ratingnumber]="rating.userTotal"></newrating>
-
-                  <p text-wrap>
-                     <!--   {{rating.review.substr(0, 20)}}...-->
-                     {{rating.review}}
-
-                  </p>
-                </span>
+                     <newrating [ratingnumber]="rating.userTotal"></newrating>
+        
+                          <p text-wrap>
+                             <!--   {{rating.review.substr(0, 20)}}...-->
+                             {{rating.review}}
+        
+                          </p>
+                        </span>
                         </ion-col>
                     </ion-row>
                 </ion-col>
@@ -47,4 +47,7 @@
 
         </ion-row>
     </ion-item>
+
+
+
 </ion-content>

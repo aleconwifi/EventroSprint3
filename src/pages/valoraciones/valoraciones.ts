@@ -51,6 +51,7 @@ export class ValoracionesPage {
           });
 
           toast.present();
+          this.navCtrl.setRoot("HomePage");
         }
 
         if(res.error){
@@ -66,7 +67,7 @@ export class ValoracionesPage {
 
       });
 
-      this.navCtrl.setRoot("HomePage");
+     
   }
 
   //obtener el id del usuario

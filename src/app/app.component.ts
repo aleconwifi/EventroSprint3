@@ -24,8 +24,7 @@ export class MyApp implements AfterViewInit {
                   private storage: Storage,
                   private evento: EventoProvider) {
 
-
-    this.initializeApp();
+                    this.initializeApp();
 
     // used for an example of ngFor and navigation
     this.pages = [
@@ -35,27 +34,32 @@ export class MyApp implements AfterViewInit {
       {title: 'Los mejores', component: 'MejoresPage', icon: 'trophy' },
       {title: 'Categorias', component: 'CategoriasPage', icon: 'list-box' },
       {title: 'Asistiré', component: 'AsistirePage', icon: 'heart' },
-      {title: 'Crear Evento', component: 'CreareventoPage', icon: 'add-circle' },
+      {title: 'Buscar por dia', component: 'MesesPage', icon: 'calendar' },
+      {title: 'Crear evento', component: 'CreareventoPage', icon: 'add' },
       
     ];
 
   }
 
-  
-
-
 
   ngAfterViewInit(){}
 
   initializeApp() {
+
+    
     this.platform.ready().then(() => {
       
       this.statusBar.styleDefault();
       this.splashScreen.hide();
 
+      this.evento.getEmail().then(result=>{
+       this.getData(result)
+      });
+
       this.evento.getEmail().then(result => {
+        console.log(result);
         if(result === null){
-          this.nav.setRoot("LoginPage");
+          this.nav.setRoot('LoginPage');
         }
 
         if(result !== null){
@@ -63,12 +67,16 @@ export class MyApp implements AfterViewInit {
           .subscribe(res=>{
             this.user = res.user;
            });
-          this.nav.setRoot("HomePage");
+          this.nav.setRoot('HomePage');
+
         }
       });
 
+      
+
+      /*
       //revisa el email en el localstorage
-   /*  this.storage.get('useremail').then(loggedIn=>{
+     this.storage.get('useremail').then(loggedIn=>{
           if(loggedIn === null){
             this.nav.setRoot("LoginPage");
           }
@@ -83,6 +91,20 @@ export class MyApp implements AfterViewInit {
       });*/
     });
   }
+  ionViewWillLoad(){
+    this.evento.getEmail().then(result =>{
+      console.log(result);
+      this.getData(result)
+    });
+   
+    }
+
+  getData(email) {
+    this.evento.getUserData(email).subscribe(res =>{
+      console.log(res);
+      this.user = res.user;
+    })
+  }
   //para poner el back automatico a las paginas que no son home
   openPage(page) {
   if(page.component ==="HomePage"){
@@ -91,6 +113,7 @@ export class MyApp implements AfterViewInit {
     this.nav.push(page.component);
 
   }
+
   }
 
   logout(){

@@ -29,7 +29,7 @@
     </ion-list>
 
     <ion-list *ngIf="user">
-        <ion-list-header class="account">Eventos </ion-list-header>
+        <ion-list-header class="account">Eventos Creados </ion-list-header>
         <ion-item *ngFor="let userevento of user.eventos">
             <ion-avatar item-start>
                 <img src="https://res.cloudinary.com/eventro/image/upload/v{{userevento.evento.imageVersion}}/{{userevento.evento.imageId}}">

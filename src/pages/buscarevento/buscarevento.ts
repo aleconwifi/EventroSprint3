@@ -4,7 +4,7 @@ import * as _ from 'lodash';
 import { EventoProvider } from '../../providers/evento/evento';
 
 /**
- * Generated class for the IreventoPage page.
+ * Generated class for the BuscareventoPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -12,11 +12,10 @@ import { EventoProvider } from '../../providers/evento/evento';
 
 @IonicPage()
 @Component({
-  selector: 'page-irevento',
-  templateUrl: 'irevento.html',
+  selector: 'page-buscarevento',
+  templateUrl: 'buscarevento.html',
 })
-export class IreventoPage {
-
+export class BuscareventoPage {
 
   irEvento: any;
   nombre: string;
@@ -148,6 +147,5 @@ export class IreventoPage {
 
 
 
-  
 
 }

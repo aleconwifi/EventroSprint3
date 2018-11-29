@@ -1,7 +1,9 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, LoadingController, AlertController } from 'ionic-angular';
 import { RegisterProvider } from '../../providers/register/register';
+
+import { Component } from '@angular/core';
 import { Storage } from '@ionic/storage';
+
+import { IonicPage, NavController, NavParams, LoadingController, AlertController } from 'ionic-angular';
 
 
 
@@ -48,6 +50,7 @@ export class LoginPage {
         .subscribe(res => {
           this.loading.dismiss();
           if(res.user){
+    
             this.storage.set('useremail', res.user.email);
             this.navCtrl.setRoot("HomePage");
           }
